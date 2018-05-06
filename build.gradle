@@ -19,6 +19,11 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'war'
 apply plugin: 'docker'
 
+war {
+    baseName = 'users_manager'
+    version = 'latest'
+}
+
 group = 'task'
 version = 'latest'
 sourceCompatibility = 1.8
@@ -38,6 +43,10 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-rest')
 //    compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-devtools')
+    compile('javax.servlet:jstl')
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.2.17.Final'
     compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.2.17.Final'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-logging', version: '2.0.0.RELEASE'
@@ -50,6 +59,16 @@ dependencies {
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 //    testCompile('org.springframework.security:spring-security-test')
+//    // https://mvnrepository.com/artifact/org.webjars/bootstrap
+//    compile group: 'org.webjars', name: 'bootstrap', version: '4.1.0'
+//    // https://mvnrepository.com/artifact/org.webjars/bootstrap-datepicker
+//    compile group: 'org.webjars', name: 'bootstrap-datepicker', version: '1.8.0'
+//    // https://mvnrepository.com/artifact/org.webjars/jquery
+//    compile group: 'org.webjars', name: 'jquery', version: '3.3.1-1'
+//    // https://mvnrepository.com/artifact/javax.servlet/jstl
+//    compile group: 'javax.servlet', name: 'jstl', version: '1.2'
+//    // https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper
+//    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.8'
 }
 
 task buildDocker(type: Docker, dependsOn: build) {

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import task.model.Gender;
 import task.model.User;
 import task.model.UserProfile;
@@ -13,6 +14,7 @@ import task.repository.UserRepository;
 import java.util.Calendar;
 
 @SpringBootApplication
+@ComponentScan("task")
 public class UsersManagerApplication implements CommandLineRunner {
 
     @Autowired
